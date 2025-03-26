@@ -26,15 +26,12 @@ export function SettingsDialog({ isOpen, onOpenChange }: SettingsDialogProps) {
   const [prompt, setPrompt] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
 
-  const onDrop = useCallback((acceptedFiles: File[]) => {
-    if (acceptedFiles.length > 0) {
-      const file = acceptedFiles[0];
-      setConfigFile({
-        name: file.name,
-        size: file.size
-      });
-    }
-  }, []);
+  
+const onDrop = useCallback((acceptedFiles: File[]) => {
+  if (acceptedFiles.length > 0) {
+    setConfigFile(acceptedFiles[0]);
+  }
+}, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
