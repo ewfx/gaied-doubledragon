@@ -80,16 +80,30 @@ Building this system wasn’t without hurdles:
 ## 🏃 How to Run
 1. Clone the repository  
    ```sh
-   git clone https://github.com/your-repo.git
+   git clone https://github.com/gaied-doubledragon.git
    ```
 2. Install dependencies
    Ensure Python 3.8+ is installed, then run:   
    ```sh
+   cd code/backend/fastapi
    pip install -r requirements.txt (for Python)
    ```
-4. Run the project  
+
+3. Run the backend
+   Create a .env file and add OPEN_AI_KEY and MONGO_URI
+   then run,
    ```sh
-   python app.py
+   uvicorn main:app --host 0.0.0.0 --port 8000
+   ```
+5. Open a new terminal
+   then run:   
+   ```sh
+   cd code/frontend/
+   npm install
+   ```
+6. Run the frontend
+   ```sh
+   npm run dev
    ```
 
 ## 🏗️ Tech Stack
