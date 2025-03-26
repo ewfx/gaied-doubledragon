@@ -20,7 +20,7 @@ The **Email Request Classification and Processing System** is an innovative solu
 
 ## 🎥 Demo
 🔗 [Live Demo](https://email-processor.netlify.app/)  
-📹 [Video Demo](#) (if applicable)  
+📹 [Video Demo](https://github.com/ewfx/gaied-doubledragon/raw/refs/heads/main/artifacts/demo/demo-video_gaied-double_dragon.mp4)
 🖼️ Screenshots:
 ![image](https://github.com/user-attachments/assets/da55c1dd-ac10-454d-bb7f-20aefe4433fd)
 ![image](https://github.com/user-attachments/assets/91c43bf2-c315-4e38-897f-02ab12121714)
