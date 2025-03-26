@@ -58,7 +58,7 @@ const transformEmailData = (document: any): EmailResponse => {
 };
 // Create axios instance with default config
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000',
+  baseURL: 'https://ws.104.197.74.131.nip.io',
   headers: {
     'Content-Type': 'application/json',
   },
