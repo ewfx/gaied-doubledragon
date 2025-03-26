@@ -283,12 +283,6 @@ def search_similar_emails(query_embedding):
             "$project": {
                 "_id": 0,
                 "email": 1,
-                "classification": 1,
-                "receiver_email": 1,
-                "similar_emails": 1,
-                "created_at": 1,
-                "embedding": 0,
-                "attachments": 0,
                 "score": {"$meta": "vectorSearchScore"},
             }
         },
