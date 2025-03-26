@@ -1,5 +1,4 @@
-# 🚀 EMAIL AND ATTACHMENT
-INTENT CLASSIFICATION
+# 🚀 EMAIL AND ATTACHMENT INTENT CLASSIFICATION
 
 ## 📌 Table of Contents
 - [Introduction](#introduction)
