@@ -7,7 +7,7 @@ export const HoverEffect = ({
   className,
 }: {
   items: {
-    icon: React.ReactNode;
+    icon?: React.ReactNode;
     title: string;
     description: string;
     onClick?: () => void;
@@ -51,10 +51,22 @@ export const HoverEffect = ({
   };
 
   const handleClick = () => {
-    if (items[currentIndex].onClick) {
-      items[currentIndex].onClick();
+    // Safely check if the current item has an onClick handler
+    const currentItem = items[currentIndex];
+    if (currentItem && typeof currentItem.onClick === 'function') {
+      currentItem.onClick();
     }
   };
+
+  // Ensure we have a valid currentIndex
+  const safeCurrentIndex = items && items.length > 0 
+    ? currentIndex % items.length 
+    : 0;
+
+  // Safely get the current item
+  const currentItem = items && items.length > 0 
+    ? items[safeCurrentIndex] 
+    : { title: '', description: '' };
 
   return (
     <div className={cn("relative", className)}>
@@ -68,7 +80,7 @@ export const HoverEffect = ({
       >
         <AnimatePresence mode="wait">
           <motion.div
-            key={currentIndex}
+            key={safeCurrentIndex}
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -50 }}
@@ -76,17 +88,20 @@ export const HoverEffect = ({
             className="relative group block p-2 h-full w-full"
             role="button"
             onClick={handleClick}
-            style={{ cursor: items[currentIndex].onClick ? 'pointer' : 'default' }}
+            style={{ cursor: currentItem.onClick ? 'pointer' : 'default' }}
           >
             <div className="rounded-2xl h-full w-full p-4 overflow-hidden bg-zinc-900 border border-zinc-800 relative z-20">
               <div className="relative z-50">
-                <div className="p-4">{items[currentIndex].icon}</div>
+                {/* Only render icon if it exists */}
+                {currentItem.icon && (
+                  <div className="p-4">{currentItem.icon}</div>
+                )}
                 <div className="p-4">
                   <div className="text-zinc-100 font-semibold tracking-wide">
-                    {items[currentIndex].title}
+                    {currentItem.title}
                   </div>
                   <div className="mt-2 text-zinc-400 tracking-wide leading-relaxed text-sm">
-                    {items[currentIndex].description}
+                    {currentItem.description}
                   </div>
                 </div>
               </div>
@@ -102,7 +117,7 @@ export const HoverEffect = ({
             key={index}
             onClick={() => setCurrentIndex(index)}
             className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              index === currentIndex
+              index === safeCurrentIndex
                 ? "bg-indigo-500 w-4"
                 : "bg-zinc-600 hover:bg-zinc-500"
             }`}
